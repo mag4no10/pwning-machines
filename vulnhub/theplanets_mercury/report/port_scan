@@ -1,0 +1,4 @@
+# Nmap 7.92 scan initiated Thu Dec 29 16:51:43 2022 as: nmap -sV -oG port_scan 192.168.0.128
+Host: 192.168.0.128 ()	Status: Up
+Host: 192.168.0.128 ()	Ports: 22/open/tcp//ssh//OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)/, 8080/open/tcp//http-proxy//WSGIServer|0.2 CPython|3.8.2/	Ignored State: closed (998)
+# Nmap done at Thu Dec 29 16:53:16 2022 -- 1 IP address (1 host up) scanned in 92.69 seconds
