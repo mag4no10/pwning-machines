@@ -1,0 +1,18 @@
+# Nmap 7.92 scan initiated Fri Dec 30 20:12:29 2022 as: nmap -sCV -n -p22,80,443 --min-rate 5000 -Pn -oN port_scan_2 192.168.0.130
+Nmap scan report for 192.168.0.130
+Host is up (0.00061s latency).
+
+PORT    STATE  SERVICE  VERSION
+22/tcp  closed ssh
+80/tcp  open   http     Apache httpd
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache
+443/tcp open   ssl/http Apache httpd
+|_http-title: Site doesn't have a title (text/html).
+| ssl-cert: Subject: commonName=www.example.com
+| Not valid before: 2015-09-16T10:45:03
+|_Not valid after:  2025-09-13T10:45:03
+|_http-server-header: Apache
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Dec 30 20:12:42 2022 -- 1 IP address (1 host up) scanned in 13.01 seconds

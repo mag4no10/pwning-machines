@@ -1,0 +1,24 @@
+DRIPPINGBLUES
+
+0.- install vbox and add the downloaded machine
+
+1.- run the machine and get the ip
+    sudo netdiscover
+
+2.- port scan
+    ip: 192.168.0.130 -> Linux
+    22/tcp  closed ssh
+    80/tcp  open   http
+    443/tcp open   https
+
+3.- gobuster scan
+    access robots.txt
+    1st flag: 073403c8a58a1f80d943455fb30724b9
+
+4.- INFO:
+    wordpress html css js
+    modernizr
+    jQuery
+    mySQL
+    php
+    possible users: "friend_" "mr. robot"

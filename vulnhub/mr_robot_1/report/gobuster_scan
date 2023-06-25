@@ -1,0 +1,54 @@
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://192.168.0.130
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/big.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2022/12/30 20:17:42 Starting gobuster in directory enumeration mode
+===============================================================
+/.htaccess            (Status: 403) [Size: 218]
+/.htpasswd            (Status: 403) [Size: 218]
+/0                    (Status: 301) [Size: 0] [--> http://192.168.0.130/0/]
+/0000                 (Status: 301) [Size: 0] [--> http://192.168.0.130/0000/]
+/Image                (Status: 301) [Size: 0] [--> http://192.168.0.130/Image/]
+/admin                (Status: 301) [Size: 235] [--> http://192.168.0.130/admin/]
+/atom                 (Status: 301) [Size: 0] [--> http://192.168.0.130/feed/atom/]
+/audio                (Status: 301) [Size: 235] [--> http://192.168.0.130/audio/]
+/blog                 (Status: 301) [Size: 234] [--> http://192.168.0.130/blog/]
+/css                  (Status: 301) [Size: 233] [--> http://192.168.0.130/css/]
+/dashboard            (Status: 302) [Size: 0] [--> http://192.168.0.130/wp-admin/]
+/favicon.ico          (Status: 200) [Size: 0]
+/feed                 (Status: 301) [Size: 0] [--> http://192.168.0.130/feed/]
+/image                (Status: 301) [Size: 0] [--> http://192.168.0.130/image/]
+/images               (Status: 301) [Size: 236] [--> http://192.168.0.130/images/]
+/intro                (Status: 200) [Size: 516314]
+/js                   (Status: 301) [Size: 232] [--> http://192.168.0.130/js/]
+/license              (Status: 200) [Size: 19930]
+/login                (Status: 302) [Size: 0] [--> http://192.168.0.130/wp-login.php]
+/page1                (Status: 301) [Size: 0] [--> http://192.168.0.130/]
+/phpmyadmin           (Status: 403) [Size: 94]
+/rdf                  (Status: 301) [Size: 0] [--> http://192.168.0.130/feed/rdf/]
+/readme               (Status: 200) [Size: 7334]
+/robots               (Status: 200) [Size: 41]
+/robots.txt           (Status: 200) [Size: 41]
+/rss                  (Status: 301) [Size: 0] [--> http://192.168.0.130/feed/]
+/rss2                 (Status: 301) [Size: 0] [--> http://192.168.0.130/feed/]
+/sitemap              (Status: 200) [Size: 0]
+/sitemap.xml          (Status: 200) [Size: 0]
+/video                (Status: 301) [Size: 235] [--> http://192.168.0.130/video/]
+/wp-admin             (Status: 301) [Size: 238] [--> http://192.168.0.130/wp-admin/]
+/wp-content           (Status: 301) [Size: 240] [--> http://192.168.0.130/wp-content/]
+/wp-config            (Status: 200) [Size: 0]
+/wp-includes          (Status: 301) [Size: 241] [--> http://192.168.0.130/wp-includes/]
+/wp-login             (Status: 200) [Size: 2747]
+/xmlrpc               (Status: 405) [Size: 42]
+
+===============================================================
+2022/12/30 20:23:54 Finished
+===============================================================
